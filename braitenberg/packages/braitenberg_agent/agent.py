@@ -25,8 +25,8 @@ from solution.preprocessing import preprocess
 # TODO edit this Config class ! Play with different gain and const values
 @dataclass
 class BraitenbergAgentConfig:
-    gain: float = 0.9
-    const: float = 0.0
+    gain: float = 0.2
+    const: float = 0.05
 
 
 class BraitenbergAgent:
@@ -97,14 +97,16 @@ class BraitenbergAgent:
         const = self.config.const
         pwm_left = const + ls * gain
         pwm_right = const + rs * gain
+        #pwm_left_col = const + ls * gain
+        #pwm_right_col = const + rs * gain
 
-        return pwm_left, pwm_right
+        return pwm_left, pwm_right#, pwm_left_col, pwm_right_col
 
     def on_received_get_commands(self, context: Context, data: GetCommands):
         pwm_left, pwm_right = self.compute_commands()
 
         col = RGB(0.0, 0.0, 1.0)
-        col_left = RGB(pwm_left, pwm_left, 0.0)
+        col_left = RGB(pwm_left, pwm_left, 0.0)#RGB(0, 0, 255)
         col_right = RGB(pwm_right, pwm_right, 0.0)
         led_commands = LEDSCommands(col, col_left, col_right, col_left, col_right)
         pwm_commands = PWMCommands(motor_left=pwm_left, motor_right=pwm_right)

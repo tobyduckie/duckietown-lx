@@ -17,7 +17,7 @@ from solution.setup_activity import find_all_boxes_and_classes
 # NOTE: These are parameters you can play with
 
 # - the percentage of simulated data that will go into the training set (as opposed to the testing set)
-SIMULATED_TRAIN_SPLIT_PERCENTAGE = 0.8
+SIMULATED_TRAIN_SPLIT_PERCENTAGE = 0.85
 
 # - maps to use while generating new images (you don't have to change this)
 MAPS = ["loop_pedestrians", "udem1", "loop_dyn_duckiebots", "zigzag_dists"]
